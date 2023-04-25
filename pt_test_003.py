@@ -38,7 +38,7 @@ inputs = tokenizer(sentence, padding="max_length", max_length = 15)
 print(inputs)
 
 sentences = ["弱小的我也有大梦想",
-        "有梦想谁都了不起",
+        "有梦想谁都了不起。",
         "追逐梦想的心，比梦想本身，更可贵",
         "至少我们还有诗歌"]
 response = tokenizer(sentences, padding="max_length", max_length=15)
