@@ -57,3 +57,10 @@ print(dataset)
 
 #passage_dataset = load_dataset("beyond/chinese_clean_passages_80m")
 #print(dataset)
+
+dataset = load_dataset("madao33/new-title-chinese", "train")
+print(dataset)
+print(dataset["train"][0])
+ds = dataset["train"]
+ds_processed = ds.train_test_split(test_size = 0.1)
+print(ds_processed)
