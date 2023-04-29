@@ -45,10 +45,15 @@ response = tokenizer(sentences, padding="max_length", max_length=15)
 print(response)
 
 from datasets import load_dataset
-datasets = load_dataset("madao33/new-title-chinese")
-print(datasets)
+dataset = load_dataset("madao33/new-title-chinese")
+print(dataset)
 
 from datasets import list_datasets
 print(list_datasets()[:20])
+print(len(list_datasets()))
 
+dataset = load_dataset("super_glue", "boolq")
+print(dataset)
 
+#passage_dataset = load_dataset("beyond/chinese_clean_passages_80m")
+#print(dataset)
