@@ -64,3 +64,20 @@ print(dataset["train"][0])
 ds = dataset["train"]
 ds_processed = ds.train_test_split(test_size = 0.1)
 print(ds_processed)
+
+print(ds_processed["train"].filter(lambda example: "中国" in example["title"]))
+
+tokenizer = AutoTokenizer.from_pretrained("bert-base-chinese")
+
+def preprocess_function(example):
+    model_inputs = tokenizer(example["content"], max_length = 512, truncation=True)
+    labels = tokenizer(example["title"], max_length = 32, truncation=True)
+    model_inputs["labels"] = labels["input_ids"]
+    return model_inputs
+
+ds_p_2 = ds_processed.map(preprocess_function, batched=True)
+
+from datasets import load_from_disk
+ds_p_2.save_to_disk("./ds_p_2.ds")
+ds_p_2 = load_from_disk("./ds_p_2.ds")
+ds_p_2
